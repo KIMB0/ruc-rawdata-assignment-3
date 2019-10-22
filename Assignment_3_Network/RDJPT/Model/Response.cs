@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace Assignment_3_Network.RDJPT.Model
 {
     public class Response

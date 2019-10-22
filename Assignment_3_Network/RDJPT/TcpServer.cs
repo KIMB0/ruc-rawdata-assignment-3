@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using Assignment_3_Network.RDJPT.Data;
 using Newtonsoft.Json;
 
 namespace Assignment_3_Network.RDJPT
@@ -46,8 +47,11 @@ namespace Assignment_3_Network.RDJPT
             TcpClient client = (TcpClient)obj;
 
             var stream = client.GetStream();
-
+            
             var buffer = new Byte[client.ReceiveBufferSize];
+
+            Console.WriteLine(stream.DataAvailable);
+            //if (stream.DataAvailable == false) return;
 
             var rcnt = stream.Read(buffer, 0, buffer.Length);
 
@@ -57,6 +61,8 @@ namespace Assignment_3_Network.RDJPT
             var request = HandleRequest.ConvertRequest(message);
 
             var response = HandleRequest.ValidateRequest(request);
+            Console.WriteLine(response.Status);
+            Console.WriteLine(APIData.Categories[0].Name);
 
             buffer = Encoding.UTF8.GetBytes(response.ToJson());
 

@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using Assignment_3_Network.RDJPT;
+using Assignment_3_Network.RDJPT.Data;
 
 namespace Assignment_3_Network
 {
@@ -15,7 +16,7 @@ namespace Assignment_3_Network
             //    Body = (new { cid = 1, name = "BeveragesTesting" }).ToJson()
             //};
             //Console.WriteLine(request.Method);
-
+            var apiDate = new APIData();
             var tcpServer = new TcpServer();
         }
     }

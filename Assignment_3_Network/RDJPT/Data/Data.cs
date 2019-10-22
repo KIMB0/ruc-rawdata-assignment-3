@@ -1,12 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Assignment_3_Network.RDJPT.Data
 {
-    public class Data
+    public class APIData
     {
         public static List<Category> Categories;
+        public static string CategoryPath = "/api/categories";
 
-        public Data()
+        public APIData()
         {
             InitCategories();
         }
@@ -19,6 +22,15 @@ namespace Assignment_3_Network.RDJPT.Data
                 new Category() { Cid = 2, Name = "Condiments" },
                 new Category() { Cid = 3, Name = "Confections" }
             };
+        }
+
+        public static int? GetCategoryId(string path)
+        {
+            string stringNumber = Regex.Replace(path, "[^0-9]", "");
+            if (stringNumber.Length < 1) return null;
+
+            int intNumber = int.Parse(stringNumber);
+            return intNumber;
         }
 
 
